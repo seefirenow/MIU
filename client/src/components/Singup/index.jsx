@@ -6,11 +6,11 @@ import styles from "./styles.module.css";
 import { Navbar} from '.././Login/navbar'
 const Signup = () => {
 	const [data, setData] = useState({
-		firstName: "",
-		lastName: "",
-		email: "",
-		password: "",
+	userName: "",
+     email: "",
+     password:""
 	});
+
 	const [error, setError] = useState("");
 	const navigate = useNavigate();
 
@@ -21,7 +21,7 @@ const Signup = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const url = "http://localhost:8080/api/users";
+			const url = "http://localhost:8080/api/signUp";
 			const { data: res } = await axios.post(url, data);
 			navigate("/login");
 			console.log(res.message);
@@ -35,7 +35,6 @@ const Signup = () => {
 			}
 		}
 	};
-
 	return (
 		<div>
 			<Navbar/>
@@ -54,19 +53,10 @@ const Signup = () => {
 						<h1>Create Account</h1>
 						<input
 							type="text"
-							placeholder="First Name"
-							name="firstName"
+							placeholder="Name"
+							name="userName"
 							onChange={handleChange}
-							value={data.firstName}
-							required
-							className={styles.input}
-						/>
-						<input
-							type="text"
-							placeholder="Last Name"
-							name="lastName"
-							onChange={handleChange}
-							value={data.lastName}
+							value={data.userName}
 							required
 							className={styles.input}
 						/>
